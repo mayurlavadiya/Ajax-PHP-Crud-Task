@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // Ajax request for insert data
+
     function showdata() {
         output = "";
         $.ajax({
@@ -35,13 +35,14 @@ $(document).ready(function () {
         // console.log("Hello");
 
         //----- declare variable -----
+        let sid = $("#studid").val();
         let stdname = $("#nameid").val();
         let email = $("#emailid").val();
         let pwd = $("#passwordid").val();
         // console.log(stdname);
 
         //----- send data to server -----
-        mydata = { name: stdname, email: email, password: pwd }; // create javascript object mydata
+        mydata = {id: sid, name: stdname, email: email, password: pwd }; // create javascript object mydata
         // console.log(mydata);
 
         //----- call ajax -----
@@ -92,10 +93,22 @@ $(document).ready(function () {
     $("#tbody").on("click", ".btn-edit", function (){
         let id = $(this).attr("data-dd");
         console.log(id);
-        mydata
-        
+        mydata = {dd : id};
+        $.ajax({
+            url: "edit.php",
+            method: "POST",
+            dataType: "JSON",
+            data: JSON.stringify(mydata),
+            success: function(data){
+                // console.log(data);
+
+                //add value in form and target the form
+
+                $("#studid").val(data.id);
+                $("#nameid").val(data.name);
+                $("#emailid").val(data.email);
+                $("#passwordid").val(data.password);
+            },
+        });
     });
-
-
-
 });

@@ -1,19 +1,18 @@
 <?php
 
 include('dbconnection.php');
+// $_server - request for GET & POST 
 $data = stripslashes(file_get_contents("php://input"));
 $mydata = json_decode($data, true); // if  give true than give associate array
 $id = $mydata['dd'];
 
-// Delete Student Information
-if(!empty($id))
-    {
-        $sql = "DELETE FROM student WHERE id = {$id}";
-        if($con->query($sql) == TRUE){
-            echo "1";
-        }else{
-            echo "0";
-        }
-    }
+// Retrieve Data
+
+$sql = "SELECT * FROM student WHERE id = {$id}";
+$result = $con->query($sql);
+$row = $result->fetch_assoc();
+
+// Returning JSON Format Data as Response to AJAX call
+echo json_encode($row);
     
 ?>
