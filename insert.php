@@ -20,7 +20,7 @@
     $email = $mydata['email'];
     $password = $mydata['password'];
 
-    // insert data into database and add in list
+    // Only insert data into database and add in list
     // if(!empty($name) && !empty($email) && !empty($password))
     // {
     //     $sql = "INSERT INTO student (name, email, password) VALUES ('$name','$email','$password')";
