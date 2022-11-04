@@ -10,6 +10,7 @@ Delete
 Show record 
 
 OUTPUT :
+<br>
 ![image](https://user-images.githubusercontent.com/100776003/199963826-f4662740-ff9b-456e-848d-780729f884b6.png)
 
 
